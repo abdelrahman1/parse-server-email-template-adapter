@@ -1,14 +1,31 @@
 {
   "name": "parse-server-email-template-adapter",
   "version": "1.0.0",
-  "description": "",
+  "description": "parse server email adapter for sending html emails templates",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "parse-server",
+    "email",
+    "email-template",
+    "nodemailer",
+    "parse-dashboard"
+  ],
+  "author": {
+    "name": "Abdelrahman Ashraf",
+    "email": "abdelrahman.ashraf.mohamed@gmail.com",
+    "url": "https://github.com/abdelrahman1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdelrahman1/parse-server-email-template-adapter"
+  },
+  "bugs": {
+    "url": "https://github.com/abdelrahman1/parse-server-email-template-adapter/issues"
+  },
+  "license": "MIT",
   "dependencies": {
     "handlebars": "^4.0.11",
     "nodemailer": "^4.6.5"
