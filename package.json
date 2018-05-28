@@ -20,11 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abdelrahman1/parse-server-email-template-adapter"
+    "url":
+      "git+https://github.com/abdelrahman1/parse-server-email-template-adapter"
   },
   "bugs": {
-    "url": "https://github.com/abdelrahman1/parse-server-email-template-adapter/issues"
+    "url":
+      "https://github.com/abdelrahman1/parse-server-email-template-adapter/issues"
   },
+  "homepage":
+    "https://github.com/abdelrahman1/parse-server-email-template-adapter#readme",
   "license": "MIT",
   "dependencies": {
     "handlebars": "^4.0.11",
