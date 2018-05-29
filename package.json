@@ -4,7 +4,8 @@
   "description": "parse server email adapter for sending html emails templates",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [
     "parse-server",
@@ -20,18 +21,18 @@
   },
   "repository": {
     "type": "git",
-    "url":
-      "git+https://github.com/abdelrahman1/parse-server-email-template-adapter"
+    "url": "git+https://github.com/abdelrahman1/parse-server-email-template-adapter"
   },
   "bugs": {
-    "url":
-      "https://github.com/abdelrahman1/parse-server-email-template-adapter/issues"
+    "url": "https://github.com/abdelrahman1/parse-server-email-template-adapter/issues"
   },
-  "homepage":
-    "https://github.com/abdelrahman1/parse-server-email-template-adapter#readme",
+  "homepage": "https://github.com/abdelrahman1/parse-server-email-template-adapter#readme",
   "license": "MIT",
   "dependencies": {
     "handlebars": "^4.0.11",
     "nodemailer": "^4.6.5"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1"
   }
 }

@@ -48,7 +48,7 @@ const adapter = opt => {
   };
 
   //sendVerificationEmail interface
-  sendVerificationEmail = data => {
+  const sendVerificationEmail = data => {
     return new Promise((resolve, reject) => {
       const { user, appName } = data;
       sendMail({
@@ -69,7 +69,7 @@ const adapter = opt => {
   };
 
   //sendPasswordResetEmail interface
-  sendPasswordResetEmail = data => {
+  const sendPasswordResetEmail = data => {
     return new Promise((resolve, reject) => {
       const { user, appName } = data;
       sendMail({
