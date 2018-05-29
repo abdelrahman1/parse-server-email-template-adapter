@@ -1,6 +1,6 @@
 {
   "name": "parse-server-email-template-adapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "parse server email adapter for sending html emails templates",
   "main": "src/index.js",
   "scripts": {
