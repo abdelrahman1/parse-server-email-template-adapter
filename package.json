@@ -1,11 +1,15 @@
 {
   "name": "parse-server-email-template-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "parse server email adapter for sending html emails templates",
   "main": "src/index.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test":"npm run lint && jest",
+    "test:dev":"jest --watch",
+    "precommit":"npm run test",
+    "commit": "git cz"
   },
   "keywords": [
     "parse-server",
@@ -33,7 +37,14 @@
     "nodemailer": "^4.6.5"
   },
   "devDependencies": {
+    "commitizen": "2.10.1",
+    "cz-conventional-changelog": "2.1.0",
     "eslint": "4.19.1",
     "jest": "23.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
