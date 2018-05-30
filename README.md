@@ -1,39 +1,75 @@
 # Parse Server Email Template Adapter
 
-parse email adapter for sending templated html emails of parse platform (verificationEmail,  passwordResetEmail), also it could be used to send custom templated emails in parse cloud code or in your custom Apis
+[![npm version](https://badge.fury.io/js/parse-server-email-template-adapter.svg)](https://badge.fury.io/js/parse-server-email-template-adapter)
+
+parse email adapter for sending html email templates with parse platform like (verificationEmail, passwordResetEmail) or a custom email template.
+this adapter uses [nodemailer](https://nodemailer.com) as a dependancy.
 
 for more about parse server: https://github.com/parse-community/parse-server.
 
 ## Installation
+
 ```sh
 $ npm install --save parse-server-email-template-adapter
 ```
 
 ## Usage
 
+create adapter.js
+
 ```javascript
+
+//adapter options
+const options = {
+  // ... nodemailer options,
+  templates: {
+    verificationEmail: path.join(__dirname, templatePath),
+    passwordResetEmail: path.join(__dirname, templatePath)
+  }
+};
+
+//import the module and pass the options
+const mailAdapter = require("parse-server-email-adapter")({...opt});
+
+//export the options to be used in the parse server config
+//export the sendMail function to be used in sending emails in cloud code
+module.exports = {
+  mailAdapter.sendMail,
+  options,
+};
+```
+
+```javascript
+const path = require("path");
+const mailAdapter = require(/*adapter.js path*/);
 const parse = new ParseServer({
-   //...
-   emailAdapter: {
-      module: "parse-server-generic-email-template-adapter",
-      options: {
-         // ... nodemailer options,
-         templates:{
-           verificationEmail:path.join(__dirname,templatePath),
-           passwordResetEmail:path.join(__dirname,templatePath)          
-         }
-      }
-   }
+  //...parse config
+  emailAdapter: {
+    module: "parse-server-email-template-adapter",
+    options: {
+      ...mailAdapter.options
+    }
+  }
 });
 ```
+
+cloud code /cloud/main.js
+
 ```javascript
-const emailAdapter = require("parse-server-email-adapter")({
-  ...opt
+const mailAdapter = require(/*adapter.js path*/);
+const path = require("path");
+
+Parse.Cloud.define("sendMail", (req, res) => {
+  mailAdapter
+    .sendMail({
+      to: req.params.to, // "foo <foo@example.com>"
+      subject: req.params.subject, // email subject
+      template: path.join(__dirname /*template path*/),
+      templateData: {
+        /*template data*/
+      } // now you can use {{paramater}} in your template
+    })
+    .then(info => res.success("success"))
+    .catch(err => res.error(err));
 });
-emailAdapter.sendMail({
-  to:"foo <foo@example.com>",
-  subject://email subject,
-  template://template path ,
-  templateData:// data to be parsed
-}).then(info => res.success('sent')).catch(err=>res.error(err));
 ```
